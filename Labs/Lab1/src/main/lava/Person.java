@@ -27,4 +27,6 @@ public class Person {
     /**
      * @return the address
      */
-    public String getAddress() {return this.address; }}
+    public String getAddress() {return this.address; }
+
+}
