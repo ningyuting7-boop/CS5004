@@ -28,5 +28,4 @@ public class ShoeTest {
     String actual_message = e.getMessage();
     assertTrue(actual_message.contains(expected_message));
   }
-
 }
