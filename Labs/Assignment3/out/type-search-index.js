@@ -1,0 +1,1 @@
+typeSearchIndex = [{"p":"<Unnamed>","l":"Fraction","k":"10"},{"p":"<Unnamed>","l":"FractionImpl"},{"p":"<Unnamed>","l":"FractionImplTest"},{"l":"所有类和接口","u":"allclasses-index.html","k":"18"}];updateSearchResults();
