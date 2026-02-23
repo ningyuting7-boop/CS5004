@@ -32,6 +32,17 @@ public class ElementNode implements IListOfBooks {
       return rest.allBefore(year);
     }
   }
+/*
+  public IListOfBooks insertAt(int index, Book book){
+    if (index > this.count() || index < 0) {
+      throw new IndexOutOfBoundsException();
+    }
+    if (index == 0) {
+      return new ElementNode(book, this);
+    }
+    return new ElementNode(this.book, this.rest.insertAt(index - 1, book));
+  }
+ */
 
   @Override
   public IListOfBooks addAtEnd(Book newBook){

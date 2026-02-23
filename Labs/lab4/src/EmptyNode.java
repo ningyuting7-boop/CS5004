@@ -16,6 +16,8 @@ public class EmptyNode implements IListOfBooks {
   @Override
   public IListOfBooks allBefore(int year) { return new EmptyNode(); }
 
+
+
   @Override
   public IListOfBooks addAtEnd(Book newBook){
     return new ElementNode(newBook, this);
