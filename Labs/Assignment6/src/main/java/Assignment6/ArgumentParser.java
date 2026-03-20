@@ -1,5 +1,3 @@
-package Assignment6;
-
 import java.nio.file.Paths;
 
 /**
@@ -14,8 +12,6 @@ public class ArgumentParser {
    * @return a populated CommandLineOptions object
    * @throws IllegalArgumentException if arguments are invalid
    */
-  public CommandLineOptions parse(String[] args) {
-    CommandLineOptions options = new CommandLineOptions();
 
     for (int i = 0; i < args.length; i++) {
       String arg = args[i];
@@ -78,7 +74,6 @@ public class ArgumentParser {
    * @param options parsed command-line options
    * @throws IllegalArgumentException if the combination is invalid
    */
-  private void validate(CommandLineOptions options) {
     if (!options.isGenerateEmail() && !options.isGenerateLetter()) {
       throw new IllegalArgumentException(
           "At least one of --email or --letter must be provided.");
