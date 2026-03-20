@@ -1,4 +1,4 @@
-package Assignment6;
+package assignment6;
 
 import java.io.IOException;
 import java.nio.file.Files;
