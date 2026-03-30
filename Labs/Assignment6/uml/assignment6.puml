@@ -1,0 +1,79 @@
+@startuml Assignment6 - Insurance Communication Automation
+
+skinparam classAttributeIconSize 0
+skinparam classFontStyle bold
+
+class Main {
+  + {static} main(args: String[]): void
+}
+
+class ArgumentParser {
+  + parse(args: String[]): CommandLineOptions
+  - ensureValueExists(args: String[], index: int, optionName: String): void
+  - validate(options: CommandLineOptions): void
+}
+
+class CommandLineOptions {
+  - generateEmail: boolean
+  - generateLetter: boolean
+  - emailTemplatePath: Path
+  - letterTemplatePath: Path
+  - outputDir: Path
+  - csvFilePath: Path
+  + isGenerateEmail(): boolean
+  + setGenerateEmail(generateEmail: boolean): void
+  + isGenerateLetter(): boolean
+  + setGenerateLetter(generateLetter: boolean): void
+  + getEmailTemplatePath(): Path
+  + setEmailTemplatePath(emailTemplatePath: Path): void
+  + getLetterTemplatePath(): Path
+  + setLetterTemplatePath(letterTemplatePath: Path): void
+  + getOutputDir(): Path
+  + setOutputDir(outputDir: Path): void
+  + getCsvFilePath(): Path
+  + setCsvFilePath(csvFilePath: Path): void
+}
+
+class CsvReader {
+  + read(path: Path): List<CustomerRecord>
+}
+
+class CustomerRecord {
+  - fields: Map<String, String>
+  + CustomerRecord(fields: Map<String, String>)
+  + get(key: String): String
+  + getFields(): Map<String, String>
+}
+
+class TemplateProcessor {
+  - {static} PLACEHOLDER_PATTERN: Pattern
+  + processTemplate(template: String, record: CustomerRecord): String
+}
+
+class OutputGenerator {
+  + generateFiles(records: List<CustomerRecord>, template: String, processor: TemplateProcessor, outputDir: Path, prefix: String): List<Path>
+}
+
+class UsagePrinter {
+  - UsagePrinter()
+  + {static} printUsage(out: PrintStream): void
+  + {static} getUsageText(): String
+}
+
+' Relationships
+Main ..> ArgumentParser : uses
+Main ..> CsvReader : uses
+Main ..> TemplateProcessor : uses
+Main ..> OutputGenerator : uses
+Main ..> UsagePrinter : uses
+
+ArgumentParser ..> CommandLineOptions : creates
+
+CsvReader ..> CustomerRecord : creates
+
+OutputGenerator ..> CustomerRecord : reads
+OutputGenerator ..> TemplateProcessor : uses
+
+TemplateProcessor ..> CustomerRecord : reads
+
+@enduml

@@ -131,6 +131,24 @@ public class ArgumentParserTest {
   }
 
   @Test
+  public void testMissingCsvFileThrows() {
+    ArgumentParser parser = new ArgumentParser();
+
+    String[] args = {
+        "--email",
+        "--email-template", "email-template.txt",
+        "--output-dir", "emails"
+    };
+
+    IllegalArgumentException exception = assertThrows(
+        IllegalArgumentException.class,
+        () -> parser.parse(args)
+    );
+
+    assertEquals("--csv-file is required.", exception.getMessage());
+  }
+
+  @Test
   public void testUnknownArgumentThrows() {
     ArgumentParser parser = new ArgumentParser();
 
