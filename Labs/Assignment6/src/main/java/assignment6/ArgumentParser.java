@@ -8,11 +8,27 @@ import java.nio.file.Paths;
 public class ArgumentParser {
 
   /**
+   * Creates an argument parser for this program.
+   *
+   * <p>Precondition: none.</p>
+   *
+   * <p>Postcondition: this object is ready to parse and validate
+   * command-line arguments.</p>
+   */
+  public ArgumentParser() {
+  }
+
+  /**
    * Parses and validates the provided command-line arguments.
    *
    * @param args command-line arguments
    * @return a populated CommandLineOptions object
    * @throws IllegalArgumentException if arguments are invalid
+   *
+   * <p>Precondition: {@code args} is not null.</p>
+   *
+   * <p>Postcondition: returns a validated CommandLineOptions object that
+   * matches the supplied arguments.</p>
    */
   public assignment6.CommandLineOptions parse(String[] args) {
     assignment6.CommandLineOptions options = new assignment6.CommandLineOptions();
@@ -65,6 +81,12 @@ public class ArgumentParser {
    * @param index the current index of the option
    * @param optionName the option being checked
    * @throws IllegalArgumentException if the required value is missing
+   *
+   * <p>Precondition: {@code args} and {@code optionName} are not null, and
+   * {@code index} identifies an option within {@code args}.</p>
+   *
+   * <p>Postcondition: returns only when the option is followed by an actual
+   * value instead of another flag or the end of the array.</p>
    */
   private void ensureValueExists(String[] args, int index, String optionName) {
     if (index + 1 >= args.length || args[index + 1].startsWith("--")) {
@@ -77,6 +99,11 @@ public class ArgumentParser {
    *
    * @param options parsed command-line options
    * @throws IllegalArgumentException if the combination is invalid
+   *
+   * <p>Precondition: {@code options} is not null.</p>
+   *
+   * <p>Postcondition: returns only when the chosen options form a legal
+   * command-line invocation for this program.</p>
    */
   private void validate(assignment6.CommandLineOptions options) {
     if (!options.isGenerateEmail() && !options.isGenerateLetter()) {

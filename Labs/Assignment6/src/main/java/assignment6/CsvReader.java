@@ -22,11 +22,26 @@ import java.util.Map;
 public class CsvReader {
 
   /**
+   * Creates a CSV reader for customer data.
+   *
+   * <p>Precondition: none.</p>
+   *
+   * <p>Postcondition: this reader is ready to parse CSV input.</p>
+   */
+  public CsvReader() {
+  }
+
+  /**
    * Reads the CSV file and converts each row into a CustomerRecord.
    *
    * @param csvPath path to the CSV file
    * @return list of customer records
    * @throws IOException if the file cannot be read
+   *
+   * <p>Precondition: {@code csvPath} is not null and refers to a readable CSV file.</p>
+   *
+   * <p>Postcondition: returns one CustomerRecord for each nonblank data row
+   * in the file.</p>
    */
   public List<CustomerRecord> read(Path csvPath) throws IOException {
     String content = Files.readString(csvPath);
@@ -63,6 +78,11 @@ public class CsvReader {
    *
    * @param content full CSV file content
    * @return parsed rows
+   *
+   * <p>Precondition: {@code content} is not null.</p>
+   *
+   * <p>Postcondition: returns the parsed nonblank rows, or throws an
+   * exception if the CSV contains unmatched quotes.</p>
    */
   private List<List<String>> parseRows(String content) {
     List<List<String>> rows = new ArrayList<>();
@@ -118,6 +138,11 @@ public class CsvReader {
    *
    * @param headers raw header row
    * @return normalized headers
+   *
+   * <p>Precondition: {@code headers} is not null.</p>
+   *
+   * <p>Postcondition: returns lowercase, trimmed header names, removing an
+   * initial UTF-8 byte-order mark when present.</p>
    */
   private List<String> normalizeHeaders(List<String> headers) {
     List<String> normalized = new ArrayList<>();
@@ -140,6 +165,11 @@ public class CsvReader {
    *
    * @param row the row to inspect
    * @return true if all fields are blank
+   *
+   * <p>Precondition: {@code row} is not null.</p>
+   *
+   * <p>Postcondition: returns true exactly when every field in the row is null
+   * or blank after trimming.</p>
    */
   private boolean isBlankRow(List<String> row) {
     for (String field : row) {

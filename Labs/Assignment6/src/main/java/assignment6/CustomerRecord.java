@@ -11,9 +11,14 @@ public class CustomerRecord {
   private final Map<String, String> fields;
 
   /**
-   * Constructs a customer record from the given field mapping.
+   * Creates a customer record from the given field mapping.
    *
    * @param fields mapping of CSV headers to values
+   *
+   * <p>Precondition: {@code fields} is not null.</p>
+   *
+   * <p>Postcondition: this record keeps its own defensive copy of
+   * {@code fields}.</p>
    */
   public CustomerRecord(Map<String, String> fields) {
     this.fields = new LinkedHashMap<>(fields);
@@ -24,6 +29,11 @@ public class CustomerRecord {
    *
    * @param key CSV header name
    * @return the field value, or null if not found
+   *
+   * <p>Precondition: none.</p>
+   *
+   * <p>Postcondition: returns the value mapped to {@code key}, or null if
+   * the key is absent.</p>
    */
   public String get(String key) {
     return fields.get(key);
@@ -33,6 +43,10 @@ public class CustomerRecord {
    * Returns an unmodifiable view of all fields in this record.
    *
    * @return unmodifiable map of fields
+   *
+   * <p>Precondition: none.</p>
+   *
+   * <p>Postcondition: returns an unmodifiable view of this record's fields.</p>
    */
   public Map<String, String> getFields() {
     return Collections.unmodifiableMap(fields);
