@@ -129,7 +129,7 @@ public class CsvReader {
         header = header.substring(1);
       }
 
-      normalized.add(header.trim());
+      normalized.add(header.trim().toLowerCase());
     }
 
     return normalized;
