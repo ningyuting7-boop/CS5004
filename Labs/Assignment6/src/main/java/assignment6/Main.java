@@ -10,9 +10,24 @@ import java.util.List;
 public class Main {
 
   /**
+   * Prevents accidental instantiation of this utility class.
+   *
+   * <p>Precondition: none.</p>
+   *
+   * <p>Postcondition: this class remains a static program entry point only.</p>
+   */
+  private Main() {
+  }
+
+  /**
    * Runs the program using command-line arguments.
    *
    * @param args command-line arguments
+   *
+   * <p>Precondition: {@code args} is not null.</p>
+   *
+   * <p>Postcondition: the requested output files are generated, or an error
+   * message is printed and the program exits with a non-zero status.</p>
    */
   public static void main(String[] args) {
     try {

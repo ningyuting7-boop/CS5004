@@ -13,6 +13,16 @@ import java.util.List;
 public class OutputGenerator {
 
   /**
+   * Creates an object that writes generated output files.
+   *
+   * <p>Precondition: none.</p>
+   *
+   * <p>Postcondition: this generator is ready to write output files.</p>
+   */
+  public OutputGenerator() {
+  }
+
+  /**
    * Generates one output file per customer record.
    *
    * @param records   customer records
@@ -22,6 +32,11 @@ public class OutputGenerator {
    * @param prefix    file name prefix such as "email" or "letter"
    * @return list of generated file paths
    * @throws IOException if file creation or writing fails
+   *
+   * <p>Precondition: all arguments are non-null.</p>
+   *
+   * <p>Postcondition: creates the output directory if needed, writes one file
+   * for each record, and returns the paths of the generated files.</p>
    */
   public List<Path> generateFiles(List<CustomerRecord> records,
       String template,

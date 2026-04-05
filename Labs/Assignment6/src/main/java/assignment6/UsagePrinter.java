@@ -15,6 +15,10 @@ public final class UsagePrinter {
    * Prints usage information to the given output stream.
    *
    * @param out destination stream
+   *
+   * <p>Precondition: {@code out} is not null.</p>
+   *
+   * <p>Postcondition: the full usage message has been written to {@code out}.</p>
    */
   public static void printUsage(PrintStream out) {
     out.println(getUsageText());
@@ -24,6 +28,11 @@ public final class UsagePrinter {
    * Returns the usage text for the program.
    *
    * @return usage text
+   *
+   * <p>Precondition: none.</p>
+   *
+   * <p>Postcondition: returns the complete usage message shown when the user
+   * provides invalid command-line input.</p>
    */
   public static String getUsageText() {
     return "Usage:\n"
