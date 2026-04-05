@@ -18,6 +18,7 @@ public abstract class GameCharacter implements Cloneable {
   public int getHealth()    { return health; }
   public int getAttack()    { return attack; }
   public int getDefense()   { return defense; }
+  public void setName(String newName){ name = newName;}
 
   public abstract GameCharacter clone();
   public abstract String getDescription();

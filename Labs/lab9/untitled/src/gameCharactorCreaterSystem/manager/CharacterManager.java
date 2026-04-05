@@ -20,7 +20,7 @@ public class CharacterManager {
   // Prototype: clone an existing character and give it a new name
   public GameCharacter cloneAndRename(GameCharacter original, String newName) {
     GameCharacter copy = original.clone();
-    copy.name = newName;
+    copy.setName(newName);
     return copy;
   }
 
